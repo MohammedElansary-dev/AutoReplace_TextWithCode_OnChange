@@ -32,15 +32,21 @@ The lookup table should be on a separate sheet (e.g., a sheet named `Lists`) wit
 ## 📂 Setup Instructions
 
 1. **Open your Excel workbook.**
-2. **Right-click the sheet tab** where users will input data → `View Code`.
-3. **Paste the VBA code** into the worksheet module.
-4. Adjust these settings in the script:
+2. Press **Alt + F11** to open the **Visual Basic for Applications (VBA)** editor.
+3. In the **Project Explorer** window, find the sheet where you want this automation to work.
+4. **Double-click that specific worksheet name** (e.g., `Sheet1 (DataEntry)`) — this is very important!
 
-   * `Me.Range("A:R")` → the range to monitor
-   * `lookupSheetName` → name of the sheet with your lookup list
-   * `lookupRangeAddress` → e.g., "A\:B" for two-column lookup
+   * 🟡 *This script must go into the **worksheet module** (not a general module)* because it's triggered by a change event (`Worksheet_Change`).
+5. **Paste the VBA code** into the code window for that sheet.
+6. ✅ **Customize these values in the script to fit your needs:**
 
-No buttons or forms needed. It runs automatically when the user edits a cell in the range.
+   | Variable             | Purpose                                         | Default        |
+   | -------------------- | ----------------------------------------------- | -------------- |
+   | `Me.Range("A:R")`    | The input range to monitor for changes          | Columns A to R |
+   | `lookupSheetName`    | The name of the sheet containing your lookup    | "Lists"        |
+   | `lookupRangeAddress` | The two-column range for lookup (label to code) | "A\:B"         |
+
+   🔧 Adjust these three lines in the code to match your sheet structure.
 
 ---
 
